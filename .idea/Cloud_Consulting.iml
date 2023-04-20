@@ -2,7 +2,16 @@
 <module type="IlluminatedCloud" version="4">
   <component name="FacetManager">
     <facet type="IlluminatedCloud" name="Illuminated Cloud">
-      <configuration />
+      <configuration>
+        <option name="connectionName" value="cloud_consulting" />
+        <option name="connectionType" value="OAUTH" />
+        <option name="moduleContents">
+          <ModuleContents>
+            <option name="contentSelectionType" value="PACKAGE_XML" />
+            <option name="packageXmlRelativePath" value="manifest/package.xml" />
+          </ModuleContents>
+        </option>
+      </configuration>
     </facet>
   </component>
   <component name="NewModuleRootManager" inherit-compiler-output="true">
@@ -11,7 +20,10 @@
       <sourceFolder url="file://$MODULE_DIR$/config" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/force-app/main/default" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/manifest" isTestSource="false" />
+      <excludeFolder url="file://$MODULE_DIR$/.sfdx" />
+      <excludeFolder url="file://$MODULE_DIR$/.sf" />
     </content>
+    <orderEntry type="jdk" jdkName="IlluminatedCloud (Cloud_Consulting/cloud_consulting)" jdkType="IlluminatedCloud" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
 </module>
