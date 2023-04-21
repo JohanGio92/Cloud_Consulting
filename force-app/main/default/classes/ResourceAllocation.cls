@@ -9,7 +9,7 @@ public with sharing class ResourceAllocation {
         ];
 
         List<User> users = [
-                SELECT Name, Profile.Name, UserRole.Name, Rate_p_hour__c
+                SELECT Id, Name, Profile.Name, UserRole.Name, Rate_p_hour__c
                 FROM User
                 WHERE Profile.Name IN ('Developer', 'Architect', 'Consultant')
                 AND Id IN (
@@ -21,7 +21,7 @@ public with sharing class ResourceAllocation {
         ];
 
         List<User> complementUsers = [
-                SELECT Name, Profile.Name, UserRole.Name, Rate_p_hour__c
+                SELECT Id, Name, Profile.Name, UserRole.Name, Rate_p_hour__c
                 FROM User
                 WHERE Profile.Name IN ('Developer', 'Architect', 'Consultant')
                 AND Id NOT IN (
@@ -36,7 +36,7 @@ public with sharing class ResourceAllocation {
 
     public List<ProjectItem__c> getProjectItems(Id projectId) {
         return [
-            SELECT rol__c, Quantity__c
+            SELECT Id, rol__c, Quantity__c
             FROM ProjectItem__c
             WHERE project__c =: projectId
         ];

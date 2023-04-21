@@ -1,0 +1,15 @@
+<template>
+	<div>
+		<template for:each={resources} for:item="resource">
+			<p key={resource.Id}>{resource.Name}</p>
+			<p key={resource.Id}>{resource.Rate_p_hour__c}</p>
+		</template>
+	</div>
+	
+	<div>
+		<template for:each={projectItems} for:item="projectItem">
+			<p key={projectItem.Id}>{projectItem.Rol__c}</p>
+			<p key={projectItem.Id}>{projectItem.Quantity__c}</p>
+		</template>
+	</div>
+</template>
