@@ -33,26 +33,10 @@
 		<template for:each={projectItems} for:item="projectItem">
 			<p class="bg_project" key={projectItem.Id}>{projectItem.Rol__c} - Hours to Cover {projectItem.Quantity__c}</p>
 			<template for:each={resources} for:item="resource">
-				<template lwc:if={projectItem.Rol__c === resource.Profile.Name}>
-					<div class="bg_resource" key={resource.Id}>
-						<lightning-layout multiple-rows="true" horizontal-align="space">
-							<lightning-layout-item class="bg_resource-name" padding="around-small" size="5">
-								<lightning-input type="checkbox" label={resource.Name}></lightning-input>
-							</lightning-layout-item>
-							<lightning-layout-item class="bg_resource-name" padding="around-small" size="5">
-								<p>{resource.Rate_p_hour__c} USD per hours</p>
-							</lightning-layout-item>
-							<lightning-layout-item padding="around-small" size="6">
-								<lightning-input type="date" label="Start Date" placeholder="04/02/2023" checked>
-								</lightning-input>
-							</lightning-layout-item>
-							<lightning-layout-item padding="around-small" size="6">
-								<lightning-input type="date" label="End Date" placeholder="04/02/2023" checked>
-								</lightning-input>
-							</lightning-layout-item>
-						</lightning-layout>
-					</div>
-				</template>
+				<div class="bg_resource" key={resource.Id}>
+					<c-resource-item resource={resource} resource-rol={resource.Profile.Name} project-rol={projectItem.Rol__c}>
+					</c-resource-item>
+				</div>
 			</template>
 		</template>
 	</div>
