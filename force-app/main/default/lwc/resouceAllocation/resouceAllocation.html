@@ -1,4 +1,6 @@
 <template>
+
+	<!-- comment 
 	<div>
 		<template for:each={projectItems} for:item="projectItem">
 			<p class="bg_project" key={projectItem.Id}>{projectItem.Rol__c} - Hours to Cover {projectItem.Quantity__c}
@@ -28,15 +30,13 @@
 			</div>
 		</template>
 	</div>
-
+-->
 	<div>
 		<template for:each={projectItems} for:item="projectItem">
 			<p class="bg_project" key={projectItem.Id}>{projectItem.Rol__c} - Hours to Cover {projectItem.Quantity__c}</p>
 			<template for:each={resources} for:item="resource">
-				<div class="bg_resource" key={resource.Id}>
-					<c-resource-item resource={resource} resource-rol={resource.Profile.Name} project-rol={projectItem.Rol__c}>
-					</c-resource-item>
-				</div>
+			  <c-resource-item key={resource.Id} resource={resource} resource-rol={resource.Profile.Name} project-rol={projectItem.Rol__c}>
+				</c-resource-item>
 			</template>
 		</template>
 	</div>

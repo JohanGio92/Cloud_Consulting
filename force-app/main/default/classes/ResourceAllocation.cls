@@ -1,6 +1,7 @@
 public with sharing class ResourceAllocation {
 
-    public List<User> getResources(Id projectId) {
+    @AuraEnabled
+    public static List<User> getResources(Id projectId) {
 
         Project__c project = [
           SELECT Id, Project_Start__c, Project_End__c
@@ -15,8 +16,9 @@ public with sharing class ResourceAllocation {
                 AND Id IN (
                         SELECT User__c FROM ResourceProject__c
                         WHERE Start_Date__c != NULL AND End_Date__c != NULL
-                        AND ( NOT ( Start_Date__c <=: Project.Project_Start__c AND End_Date__c >=: Project.Project_Start__c))
-                        AND ( NOT ( Start_Date__c <=: Project.Project_End__c AND End_Date__c >=: Project.Project_End__c))
+                        AND ( NOT ( Start_Date__c >=: Project.Project_Start__c AND Start_Date__c <=: Project.Project_End__c))
+                        AND ( NOT ( End_Date__c >=: Project.Project_Start__c AND End_Date__c <=: Project.Project_End__c))
+                        AND Project__c =: projectId
                 )
         ];
 
@@ -34,7 +36,8 @@ public with sharing class ResourceAllocation {
         return users;
     }
 
-    public List<ProjectItem__c> getProjectItems(Id projectId) {
+    @AuraEnabled
+    public static List<ProjectItem__c> getProjectItems(Id projectId) {
         return [
             SELECT Id, rol__c, Quantity__c
             FROM ProjectItem__c

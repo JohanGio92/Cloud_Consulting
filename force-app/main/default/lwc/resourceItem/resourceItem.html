@@ -1,20 +1,22 @@
 <template>
 	<template lwc:if={isEqualRol}>
-		<lightning-layout multiple-rows="true" horizontal-align="space">
-			<lightning-layout-item class="bg_resource-name" padding="around-small" size="5">
-				<lightning-input type="checkbox" label={resource.Name}></lightning-input>
-			</lightning-layout-item>
-			<lightning-layout-item class="bg_resource-name" padding="around-small" size="5">
-				<p>{resource.Rate_p_hour__c} USD per hours</p>
-			</lightning-layout-item>
-			<lightning-layout-item padding="around-small" size="6">
-				<lightning-input type="date" label="Start Date" placeholder="04/02/2023" checked>
-				</lightning-input>
-			</lightning-layout-item>
-			<lightning-layout-item padding="around-small" size="6">
-				<lightning-input type="date" label="End Date" placeholder="04/02/2023" checked>
-				</lightning-input>
-			</lightning-layout-item>
-		</lightning-layout>
+		<div class="bg_resource">
+		  <lightning-layout multiple-rows="true" horizontal-align="space">
+			  <lightning-layout-item class="bg_resource-name" padding="around-small" size="5">
+				  <lightning-input type="checkbox" label={resource.Name}></lightning-input>
+			  </lightning-layout-item>
+			  <lightning-layout-item class="bg_resource-name" padding="around-small" size="5">
+				  <p>{resource.Rate_p_hour__c} USD per hours</p>
+			  </lightning-layout-item>
+			  <lightning-layout-item padding="around-small" size="6">
+				  <lightning-input type="date" label="Start Date" placeholder="04/02/2023" checked>
+				  </lightning-input>
+			  </lightning-layout-item>
+			  <lightning-layout-item padding="around-small" size="6">
+				  <lightning-input type="date" label="End Date" placeholder="04/02/2023" checked>
+				  </lightning-input>
+			  </lightning-layout-item>
+		  </lightning-layout>
+		</div>
 	</template>
 </template>
