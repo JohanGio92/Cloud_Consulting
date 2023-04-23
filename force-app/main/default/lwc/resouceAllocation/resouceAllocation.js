@@ -30,4 +30,22 @@ export default class ResouceAllocation extends LightningElement {
 			this.projectItems = undefined;
 		}
 	}
+
+	handleClick(event) {
+		event.preventDefault();
+		const resourceItems = this.template.querySelectorAll('c-resource-item')
+		//console.log(resourceItem);
+		const resourceProject = [];
+		
+		resourceItems.forEach( resourceItem => {
+			resourceItem.validationItem();
+			if (Object.keys(resourceItem.resourceProject).length != 0) {
+				resourceProject.push(resourceItem.resourceProject);
+			}
+		});
+		//resourceItems.forEach( resourceItem => resourceProject.push(resourceItem.resourceProject));
+
+		const jsonResourceProjects = JSON.stringify(resourceProject);
+		console.log(jsonResourceProjects);
+	}
 }

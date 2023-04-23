@@ -5,6 +5,21 @@
 // You can also execute the entire file by running the command:
 //     SFDX: Execute Anonymous Apex with Editor Contents
 
-string tempvar = 'Enter_your_name_here';
-System.debug('Hello World!');
-System.debug('My name is ' + tempvar);
+System.debug('<<<<Prueba10>>>>');
+for (User user: ResourceAllocation.getResources('a00Dp000001lEeHIAU')) {
+    System.debug(user.Name + ' - ' + user.Profile.Name);
+}
+
+System.debug('==============================================================');
+
+System.debug('<<<<Prueba Bernardo Artur>>>>');
+for (User user: ResourceAllocation.getResources('a00Dp000001lIIXIA2')) {
+    System.debug(user.Name + ' - ' + user.Profile.Name);
+}
+
+System.debug('==============================================================');
+
+System.debug('<<<<PruebaPrueba2>>>>');
+for (User user: ResourceAllocation.getResources('a00Dp000001lD0MIAU')) {
+    System.debug(user.Name + ' - ' + user.Profile.Name);
+}
