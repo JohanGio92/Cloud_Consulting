@@ -39,7 +39,9 @@ public with sharing class ResourceAllocation {
     @AuraEnabled
     public static List<ProjectItem__c> getProjectItems(Id projectId) {
         return [
-            SELECT Id, rol__c, Quantity__c, Project__c, Project__r.Project_Start__c, Project__r.Project_End__c
+            SELECT Id, rol__c, Quantity__c, Project__c,
+                    Project__r.Project_Start__c, Project__r.Project_End__c,
+                    Project__r.QuantityHourDeveloper__c, Project__r.QuantityHourArchitect__c, Project__r.QuantityHourConsult__c
             FROM ProjectItem__c
             WHERE project__c =: projectId
         ];

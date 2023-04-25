@@ -47,6 +47,19 @@ export default class ResourceItem extends LightningElement {
 		return projectStartDate <= _valueStartDate && _valueStartDate <= projectEndDate;
 	}
 
+	get MaxAssignedHours() {
+	  let hoursToCover;
+	  let quantity = this.projectItem.Quantity__c;
+	  if (this.projectItem.Rol__c === 'Architect') {
+		  hoursToCover = quantity - this.projectItem.Project__r.QuantityHourArchitect__c;
+	  } else if (this.projectItem.Rol__c === 'Developer') {
+		  hoursToCover = quantity - this.projectItem.Project__r.QuantityHourDeveloper__c;
+	  } else {
+		  hoursToCover = quantity - this.projectItem.Project__r.QuantityHourConsult__c;
+	  }
+	  return hoursToCover;
+	}
+
 	handleChangeStartDate(event) {
 		const _valueStartDate = event.target.value;
 		this.valueStartDate = _valueStartDate;
@@ -65,7 +78,17 @@ export default class ResourceItem extends LightningElement {
 	}
 
 	handleChangeAssignedHours(event) {
-		this.valueAssignedHours = event.target.value;
+		let inputNumber = event.target;
+		inputNumber.setCustomValidity('');
+
+		if (inputNumber.value > inputNumber.max) {
+			inputNumber.setCustomValidity('Hours to cover must be greater than equal to ' + inputNumber.max);
+			inputNumber.reportValidity();
+		}
+
+		this.valueAssignedHours = inputNumber.value;
+		console.log(this.template);
+		console.log(this);
 	}
 	
 	@api

@@ -54,5 +54,6 @@ export default class ResouceAllocation extends LightningElement {
 			refreshApex(this.projectItems);
 		})
 		.catch((error) => console.log(error));
+		location.reload();
 	}
 }

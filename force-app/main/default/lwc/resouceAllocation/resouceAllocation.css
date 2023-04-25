@@ -1,15 +1,3 @@
-
-:host .bg_project {
-  background-color: cadetblue;
-  padding: 0.5rem;
-  color: white;
-  border-radius: 0.5rem;
-  text-align: center;
-  margin: 0.2rem;
-  font-size: larger;
-  font-weight: bolder;
-}
-
 :host lightning-button {
   --slds-c-button-brand-color-background: cadetblue;
   --slds-c-button-brand-color-background-hover: #63a6a8;

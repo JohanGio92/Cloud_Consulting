@@ -1,0 +1,11 @@
+:host .bg_project {
+  background-color: cadetblue;
+  padding: 0.5rem;
+  color: white;
+  border-radius: 0.5rem;
+  text-align: center;
+  margin: 0.2rem;
+  font-size: larger;
+  font-weight: bolder;
+
+}

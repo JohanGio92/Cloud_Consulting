@@ -1,6 +1,6 @@
 <template>
 	<template for:each={projectItems} for:item="projectItem">
-		<p class="bg_project" key={projectItem.Id}>{projectItem.Rol__c} - Hours to Cover {projectItem.Quantity__c}</p>
+		<c-view-project-role key={projectItem.Id} project-item={projectItem}></c-view-project-role>
 		<template for:each={resources} for:item="resource">
 			<c-resource-item key={resource.Id} resource={resource} project-item={projectItem}
 				resource-rol={resource.Profile.Name} project-rol={projectItem.Rol__c}>
