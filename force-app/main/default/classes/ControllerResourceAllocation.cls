@@ -11,4 +11,9 @@ public with sharing class ControllerResourceAllocation {
         System.debug('getProjectItems' + projectId);
         return ResourceAllocation.getProjectItems(projectId);
     }
+
+    @AuraEnabled
+    public static void createResourceProjects(String jsonResourceProjects) {
+        ResourceAllocation.createResourceProject(jsonResourceProjects);
+    }
 }

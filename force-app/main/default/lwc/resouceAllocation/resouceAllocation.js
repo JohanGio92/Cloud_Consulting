@@ -1,6 +1,8 @@
 import { LightningElement, wire, api } from 'lwc';
 import getResources from '@salesforce/apex/ControllerResourceAllocation.getResources';
 import getProjectItems from '@salesforce/apex/ControllerResourceAllocation.getProjectItems'
+import createResourceProjects from '@salesforce/apex/ControllerResourceAllocation.createResourceProjects'
+import { refreshApex } from '@salesforce/apex'
 
 export default class ResouceAllocation extends LightningElement {
 	
@@ -34,7 +36,6 @@ export default class ResouceAllocation extends LightningElement {
 	handleClick(event) {
 		event.preventDefault();
 		const resourceItems = this.template.querySelectorAll('c-resource-item')
-		//console.log(resourceItem);
 		const resourceProject = [];
 		
 		resourceItems.forEach( resourceItem => {
@@ -43,9 +44,15 @@ export default class ResouceAllocation extends LightningElement {
 				resourceProject.push(resourceItem.resourceProject);
 			}
 		});
-		//resourceItems.forEach( resourceItem => resourceProject.push(resourceItem.resourceProject));
 
-		const jsonResourceProjects = JSON.stringify(resourceProject);
-		console.log(jsonResourceProjects);
+		const _jsonResourceProjects = JSON.stringify(resourceProject);
+		console.log(_jsonResourceProjects);
+
+		createResourceProjects({jsonResourceProjects: _jsonResourceProjects})
+		.then( () => { 
+			refreshApex(this.resources);
+			refreshApex(this.projectItems);
+		})
+		.catch((error) => console.log(error));
 	}
 }

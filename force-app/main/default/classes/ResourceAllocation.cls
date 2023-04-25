@@ -44,4 +44,35 @@ public with sharing class ResourceAllocation {
             WHERE project__c =: projectId
         ];
     }
+
+    //@AuraEnabled
+    //public static void createResourceProject(String jsonResourceProjects) {
+    //    List<Object> objetos = (List<Object>)JSON.deserializeStrict(jsonResourceProjects ,List<Object>.class);
+    //    List<ResourceProject__c> recursosSelecciondos = new List<ResourceProject__c>();
+
+    //    if(objetos.size() > 0){
+    //        for(Object objeto : objetos){
+    //            system.debug('Este es su objeto:'+ objeto);
+    //            Map<String,Object> json = (Map<String,Object>)objeto;
+    //            ResourceProject__c recurso = new ResourceProject__c();
+    //            recurso.Name = (String) json.get('Name');
+    //            recurso.Start_Date__c = (Date)json.get('Start_Date__c');
+    //            recurso.End_Date__c = (Date)json.get('End_Date__c');
+    //            recurso.Rol__c = (String) json.get('Rol__c');
+    //            recurso.Project__c = (Id) json.get('Project__c') ;
+    //            recurso.Assigned_Hours__c = (Integer) json.get('Assigned_Hours__c');
+    //            recurso.User__c = (Id)json.get('User__c');
+    //            recursosSelecciondos.add(recurso);
+    //        }
+    //        system.debug('Esto es lo que entrarará:' +  recursosSelecciondos);
+    //        insert recursosSelecciondos;
+    //    }
+    //}
+
+    @AuraEnabled
+    public static void createResourceProject(String jsonResourceProjects) {
+        List<ResourceProject__c> resourceprojects = (List<ResourceProject__c>) JSON.deserializeStrict(jsonResourceProjects, List<ResourceProject__c>.class);
+        Database.insert(resourceprojects);
+    }
+
 }
