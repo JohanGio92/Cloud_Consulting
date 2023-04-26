@@ -1,6 +1,9 @@
 
 :host .bg_resource {
+  /** 
   background-image: url('https://lh3.googleusercontent.com/mwPR6sK0b13uJ3FIY_KEha9jrBlj3lCFv4whk7zuwC1WdzTuK_vI1HNKefNd63pRMnbn-YSeS9L-BEvM7riOZxXPUGaCFlnIXk-xBGGI');
+   * **/
+  background-color: white;
   border-radius: 0.5rem;
   margin: 1rem;
   padding: 1rem;

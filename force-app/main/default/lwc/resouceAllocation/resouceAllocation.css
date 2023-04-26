@@ -1,6 +1,7 @@
 :host lightning-button {
   --slds-c-button-brand-color-background: cadetblue;
   --slds-c-button-brand-color-background-hover: #63a6a8;
+  --slds-c-button-brand-color-background-active: cadetblue;
   --slds-c-button-brand-color-border: black;
   --slds-c-button-brand-color-border-hover: black;
 }

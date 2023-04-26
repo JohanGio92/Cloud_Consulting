@@ -1,34 +1,40 @@
-import { LightningElement, wire, api } from 'lwc';
+import {LightningElement, wire, api} from 'lwc';
 import getResources from '@salesforce/apex/ControllerResourceAllocation.getResources';
 import getProjectItems from '@salesforce/apex/ControllerResourceAllocation.getProjectItems'
 import createResourceProjects from '@salesforce/apex/ControllerResourceAllocation.createResourceProjects'
-import { refreshApex } from '@salesforce/apex'
+import {ShowToastEvent} from 'lightning/platformShowToastEvent';
+import {refreshApex} from '@salesforce/apex'
 
 export default class ResouceAllocation extends LightningElement {
-	
+
 	@api
 	recordId;
 	resources;
 	projectItems;
 
-	@wire(getResources, { projectId: '$recordId' })
-	_getResources({data, error}) {
-		if (data) {
-			this.resources = data;
+	wireResources;
+	wireProjectItems;
+
+	@wire(getResources, {projectId: '$recordId'})
+	_getResources(result) {
+		this.wireResources = result;
+		if (result.data) {
+			this.resources = result.data;
 			this.error = undefined;
 		} else {
-			this.error = error;
+			this.error = result.error;
 			this.resources = undefined;
 		}
 	}
-	
-	@wire(getProjectItems, { projectId: '$recordId' })
-	_getProjectItems({data, error}) {
-		if (data) {
-			this.projectItems = data;
+
+	@wire(getProjectItems, {projectId: '$recordId'})
+	_getProjectItems(result) {
+		this.wireProjectItems = result;
+		if (result.data) {
+			this.projectItems = result.data;
 			this.error = undefined;
 		} else {
-			this.error = error;
+			this.error = result.error;
 			this.projectItems = undefined;
 		}
 	}
@@ -36,24 +42,45 @@ export default class ResouceAllocation extends LightningElement {
 	handleClick(event) {
 		event.preventDefault();
 		const resourceItems = this.template.querySelectorAll('c-resource-item')
-		const resourceProject = [];
-		
-		resourceItems.forEach( resourceItem => {
+		const resourceProjects = [];
+
+		resourceItems.forEach(resourceItem => {
 			resourceItem.validationItem();
 			if (Object.keys(resourceItem.resourceProject).length != 0) {
-				resourceProject.push(resourceItem.resourceProject);
+				resourceProjects.push(resourceItem.resourceProject);
 			}
 		});
 
-		const _jsonResourceProjects = JSON.stringify(resourceProject);
-		console.log(_jsonResourceProjects);
+		const _jsonResourceProjects = JSON.stringify(resourceProjects);
 
+		if (resourceProjects.length > 0) {
+			this.insertResourceProjects(_jsonResourceProjects);
+		} else {
+			this.insertFail();
+		}
+	}
+
+	insertResourceProjects(_jsonResourceProjects) {
 		createResourceProjects({jsonResourceProjects: _jsonResourceProjects})
-		.then( () => { 
-			refreshApex(this.resources);
-			refreshApex(this.projectItems);
-		})
-		.catch((error) => console.log(error));
-		location.reload();
+			.then(() => {
+				refreshApex(this.wireResources);
+				refreshApex(this.wireProjectItems);
+				const toastEvent = new ShowToastEvent({
+					title: 'Successfull',
+					message: 'Assigned Hours to Project',
+					variant: 'success',
+				});
+				this.dispatchEvent(toastEvent);
+			})
+			.catch((error) => console.log(error));
+	}
+
+	insertFail() {
+		const toastEvent = new ShowToastEvent({
+			title: 'Error',
+			message: 'You must to Assigned at least one User',
+			variant: 'error',
+		});
+		this.dispatchEvent(toastEvent);
 	}
 }
