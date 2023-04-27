@@ -18,7 +18,6 @@ public with sharing class ResourceAllocation {
                         WHERE Start_Date__c != NULL AND End_Date__c != NULL
                         AND (( Start_Date__c <: project.Project_Start__c AND End_Date__c <: project.Project_Start__c)
                         OR ( Start_Date__c >: project.Project_End__c AND End_Date__c >: project.Project_End__c))
-                        AND Project__c =: projectId
                 )
         ];
 
@@ -31,11 +30,9 @@ public with sharing class ResourceAllocation {
                 )
         ];
 
-        if (!users.isEmpty()) {
-            complementUsers.addAll(users);
-        }
+        users.addAll(complementUsers);
 
-        return complementUsers;
+        return users;
     }
 
     @AuraEnabled(Cacheable=true)

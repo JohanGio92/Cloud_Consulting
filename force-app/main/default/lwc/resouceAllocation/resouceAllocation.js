@@ -65,6 +65,7 @@ export default class ResouceAllocation extends LightningElement {
 		} else {
 			this.insertFail();
 		}
+		location.reload();
 	}
 
 	insertResourceProjects(_jsonResourceProjects) {

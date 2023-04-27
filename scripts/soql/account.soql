@@ -35,6 +35,14 @@
 //                AND ( NOT ( Start_Date__c <= 2023-04-25 AND End_Date__c >= 2023-04-25))
 //        )
 
-SELECT User__c, Project__c, Start_Date__c, End_Date__c
-FROM ResourceProject__c
-WHERE User__c IN ('005Dp000002K2GNIA0')
+//SELECT User__c, Project__c, Start_Date__c, End_Date__c
+//FROM ResourceProject__c
+//WHERE User__c IN ('005Dp000002K2GNIA0')
+
+
+SELECT Id, Name, Profile.Name, UserRole.Name, Rate_p_hour__c
+                FROM User
+                WHERE Profile.Name IN ('Developer', 'Architect', 'Consultant')
+                AND Id NOT IN (
+                        SELECT User__c FROM ResourceProject__c
+                )
