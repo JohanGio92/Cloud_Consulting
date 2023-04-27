@@ -11,3 +11,17 @@
   width: 30%;
 }
 
+:host lightning-accordion {
+	--slds-c-accordion-heading-font-size: 1.5rem;
+	--slds-c-accordion-color-border: black;
+	--slds-c-accordion-sizing-border: 1rem;
+	--slds-c-accordion-summary-color-background: cadetblue;
+	--slds-c-accordion-heading-text-color: white;
+	--slds-c-accordion-heading-text-color-active: white;
+	--slds-c-accordion-heading-text-color-hover: white;
+}
+
+:host lightning-accordion-section {
+	--slds-c-accordion-color-border: black;
+	--slds-c-accordion-sizing-border: 1rem;
+}

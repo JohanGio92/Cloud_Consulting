@@ -5,31 +5,51 @@
 // You can also execute the entire file by running the command:
 //     SFDX: Execute Anonymous Apex with Editor Contents
 
-//System.debug('<<<<Prueba10>>>>');
-//for (User user: ResourceAllocation.getResources('a00Dp000001lEeHIAU')) {
-//    System.debug(user.Name + ' - ' + user.Profile.Name);
-//}
-//
-//System.debug('==============================================================');
-//
-//System.debug('<<<<Prueba Bernardo Artur>>>>');
-//for (User user: ResourceAllocation.getResources('a00Dp000001lIIXIA2')) {
-//    System.debug(user.Name + ' - ' + user.Profile.Name);
-//}
-//
-//System.debug('==============================================================');
-//
-//System.debug('<<<<PruebaPrueba2>>>>');
-//for (User user: ResourceAllocation.getResources('a00Dp000001lD0MIAU')) {
-//    System.debug(user.Name + ' - ' + user.Profile.Name);
-//}
-//
+System.debug('<<<<Prueba10>>>>');
+for (User user: ResourceAllocation.getResources('a00Dp000001lEeHIAU')) {
+    System.debug(user.Name + ' - ' + user.Profile.Name);
+}
 
-Contact contact = (Contact)JSON.deserializeStrict( '{"FirstName":"Arturo","LastName":"Petrich"}', Contact.class);
-System.debug(contact);
+System.debug('==============================================================');
 
-List<Contact> contacts = (List<Contact>)JSON.deserializeStrict( '[{"FirstName":"Arturo","LastName":"Petrich"},{"FirstName":"Julian","LastName":"Aquino"},{"FirstName":"Belen","LastName":"Banegas"},{"FirstName":"Johan","LastName":"Revilla"}]', List<Contact>.class);
-System.debug(contacts);
+System.debug('<<<<Prueba Bernardo Artur>>>>');
+for (User user: ResourceAllocation.getResources('a00Dp000001lIIXIA2')) {
+    System.debug(user.Name + ' - ' + user.Profile.Name);
+}
 
-ResourceProject__c resourceProject = new ResourceProject__c();
-resourceProject.Rol
+System.debug('==============================================================');
+
+System.debug('<<<<PruebaPrueba2>>>>');
+for (User user: ResourceAllocation.getResources('a00Dp000001lD0MIAU')) {
+    System.debug(user.Name + ' - ' + user.Profile.Name);
+}
+
+
+Set<Id> userSet = new Set<Id>();
+userSet.add('005Dp000002JU0bIAG');
+userSet.add('005Dp000002JU4yIAG');
+userSet.add('005Dp000002JU61IAG');
+userSet.add('005Dp000002JTwEIAW');
+userSet.add('005Dp000002K2GPIA0');
+userSet.add('005Dp000002K2GRIA0');
+userSet.add('005Dp000002K2GRIA0');
+userSet.add('005Dp000002K2GRIA0');
+userSet.add('005Dp000002K2GJIA0');
+userSet.add('005Dp000002K2GKIA0');
+userSet.add('005Dp000002K2GLIA0');
+userSet.add('005Dp000002K2GMIA0');
+userSet.add('005Dp000002K2GNIA0');
+userSet.add('005Dp000002K2GOIA0');
+userSet.add('005Dp000002JTwJIAW');
+userSet.add('005Dp000002K2GSIA0');
+userSet.add('005Dp000002K2GQIA0');
+
+
+Map<Id, ResourceProject__c> resourceProjectMap = new Map<Id, ResourceProject__c>([
+        SELECT User__c, Project__c, Start_Date__c, End_Date__c
+        FROM ResourceProject__c
+        WHERE User__c IN: userSet
+]);
+
+System.debug(resourceProjectMap);
+

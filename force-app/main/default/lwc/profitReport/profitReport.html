@@ -7,10 +7,6 @@
 			<template lwc:else>
 				<h3 class="loss">LOSS</h3>
 			</template>
-			<!-- comment 
-			<lightning-input label="Percentage" type="number" min="0" max="100" value={percentage}
-				onchange={handlePercentageChange}></lightning-input>
-			-->
 			<c-chart-bar class="slds-show slds-is-relative" percentage={percentage} is-profit={isProfit}></c-chart-bar>
 		</div>
 	</lightning-card>

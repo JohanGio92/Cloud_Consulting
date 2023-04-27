@@ -11,11 +11,9 @@ export default class ProfitReport extends LightningElement {
 		if (data) {
 			this.percentage = data.Win_or_Lose__c;
 			this.error = undefined;
-			console.log('data: ' + data);
 		} else {
 			this.percentage = undefined;
 			this.error = error;
-			console.log('error: ' + error);
 		}
 	}
 
@@ -23,13 +21,4 @@ export default class ProfitReport extends LightningElement {
 		return this.percentage >= 0;
 	}
 
-
-	//constructor() {
-	//	super();
-	//	this.percentage = this.project.Win_or_Lose__c;
-	//}
-
-    //handlePercentageChange(event) {
-    //    this.percentage = event.target.value;
-    //}
 }

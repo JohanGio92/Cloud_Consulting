@@ -39,6 +39,13 @@ export default class ResouceAllocation extends LightningElement {
 		}
 	}
 
+	//get isNotEndedProyect() {
+	//	let currentDate = new Date().toJSON().slice(0, 10);
+	//	let endProject = this.projectItems[0].Project__r.Project_End__c;
+	//	console.log(endProject >= currentDate);
+	//	return endProject >= currentDate;
+	//}
+
 	handleClick(event) {
 		event.preventDefault();
 		const resourceItems = this.template.querySelectorAll('c-resource-item')

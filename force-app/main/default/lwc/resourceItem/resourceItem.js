@@ -14,7 +14,7 @@ export default class ResourceItem extends LightningElement {
 	@track valueStartDate;
 	valueEndDate;
 	valueAssignedHours;
-	
+
 	@api resourceProject;
 
 	constructor() {
@@ -48,16 +48,16 @@ export default class ResourceItem extends LightningElement {
 	}
 
 	get MaxAssignedHours() {
-	  let hoursToCover;
-	  let quantity = this.projectItem.Quantity__c;
-	  if (this.projectItem.Rol__c === 'Architect') {
-		  hoursToCover = quantity - this.projectItem.Project__r.QuantityHourArchitect__c;
-	  } else if (this.projectItem.Rol__c === 'Developer') {
-		  hoursToCover = quantity - this.projectItem.Project__r.QuantityHourDeveloper__c;
-	  } else {
-		  hoursToCover = quantity - this.projectItem.Project__r.QuantityHourConsult__c;
-	  }
-	  return hoursToCover;
+		let hoursToCover;
+		let quantity = this.projectItem.Quantity__c;
+		if (this.projectItem.Rol__c === 'Architect') {
+			hoursToCover = quantity - this.projectItem.Project__r.QuantityHourArchitect__c;
+		} else if (this.projectItem.Rol__c === 'Developer') {
+			hoursToCover = quantity - this.projectItem.Project__r.QuantityHourDeveloper__c;
+		} else {
+			hoursToCover = quantity - this.projectItem.Project__r.QuantityHourConsult__c;
+		}
+		return hoursToCover;
 	}
 
 	handleChangeStartDate(event) {
@@ -90,7 +90,7 @@ export default class ResourceItem extends LightningElement {
 		console.log(this.template);
 		console.log(this);
 	}
-	
+
 	@api
 	validationItem() {
 		if (this.valueCheckbox) {
