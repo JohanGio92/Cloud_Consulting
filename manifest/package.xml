@@ -25,6 +25,10 @@
 		<name>AuraDefinitionBundle</name>
 	</types>
 	<types>
+		<members>*</members>
+		<name>ContentAsset</name>
+	</types>
+	<types>
 		<members>Assigment_Task__c.Description__c</members>
 		<members>Assigment_Task__c.End_Date__c</members>
 		<members>Assigment_Task__c.EstimatedHours__c</members>
@@ -84,9 +88,17 @@
 		<name>CustomObject</name>
 	</types>
 	<types>
+		<members>*</members>
+		<name>CustomTab</name>
+	</types>
+	<types>
 		<members>Assigment_Task_Record_Page</members>
-		<members>ResourceProject_Record_Page</members>
+		<members>Project_management_UtilityBar</members>
 		<name>FlexiPage</name>
+	</types>
+	<types>
+		<members>*</members>
+		<name>Flow</name>
 	</types>
 	<types>
 		<members>*</members>
