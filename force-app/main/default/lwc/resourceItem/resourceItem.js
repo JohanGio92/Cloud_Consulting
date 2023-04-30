@@ -82,7 +82,7 @@ export default class ResourceItem extends LightningElement {
 		inputNumber.setCustomValidity('');
 
 		if (inputNumber.value > inputNumber.max) {
-			inputNumber.setCustomValidity('Hours to cover must be greater than equal to ' + inputNumber.max);
+			inputNumber.setCustomValidity('Hours to cover must be less than equal to ' + inputNumber.max);
 			inputNumber.reportValidity();
 		}
 

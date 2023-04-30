@@ -65,14 +65,13 @@ export default class ResouceAllocation extends LightningElement {
 		} else {
 			this.insertFail();
 		}
-		location.reload();
 	}
 
 	insertResourceProjects(_jsonResourceProjects) {
+		console.log(_jsonResourceProjects);
+		window.clearTimeout(this.delayTimeout);
 		createResourceProjects({jsonResourceProjects: _jsonResourceProjects})
 			.then(() => {
-				refreshApex(this.wireResources);
-				refreshApex(this.wireProjectItems);
 				const toastEvent = new ShowToastEvent({
 					title: 'Successfull',
 					message: 'Assigned Hours to Project',
@@ -81,6 +80,12 @@ export default class ResouceAllocation extends LightningElement {
 				this.dispatchEvent(toastEvent);
 			})
 			.catch((error) => console.log(error));
+
+		setTimeout(() => {
+			refreshApex(this.wireResources);
+			refreshApex(this.wireProjectItems);
+			location.reload()
+		}, 3000);
 	}
 
 	insertFail() {

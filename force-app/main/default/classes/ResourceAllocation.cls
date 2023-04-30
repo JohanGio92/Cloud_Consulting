@@ -1,41 +1,5 @@
 public with sharing class ResourceAllocation {
 
-    //@AuraEnabled(Cacheable=true)
-    //public static List<User> getResources(Id projectId) {
-
-    //    Project__c project = [
-    //      SELECT Id, Project_Start__c, Project_End__c
-    //      FROM Project__c
-    //      WHERE Id =: projectId
-    //    ];
-
-    //    List<User> users = [
-    //            SELECT Id, Name, Profile.Name, UserRole.Name, Rate_p_hour__c
-    //            FROM User
-    //            WHERE Profile.Name IN ('Developer', 'Architect', 'Consultant')
-    //            AND Id IN (
-    //                    SELECT User__c FROM ResourceProject__c
-    //                    WHERE Start_Date__c != NULL AND End_Date__c != NULL
-    //                    AND (( Start_Date__c <: project.Project_Start__c AND End_Date__c <: project.Project_Start__c)
-    //                    OR ( Start_Date__c >: project.Project_End__c AND End_Date__c >: project.Project_End__c))
-    //            )
-    //    ];
-
-    //    List<User> complementUsers = [
-    //            SELECT Id, Name, Profile.Name, UserRole.Name, Rate_p_hour__c
-    //            FROM User
-    //            WHERE Profile.Name IN ('Developer', 'Architect', 'Consultant')
-    //            AND Id NOT IN (
-    //                    SELECT User__c FROM ResourceProject__c
-    //            )
-    //    ];
-
-    //    users.addAll(complementUsers);
-
-    //    return users;
-    //}
-
-
     @AuraEnabled(Cacheable=true)
     public static List<User> getResources(Id projectId) {
 
@@ -48,6 +12,7 @@ public with sharing class ResourceAllocation {
         Map<Id, User> userMap = new Map<Id, User>([
                 SELECT Id, Name, Profile.Name, UserRole.Name, Rate_p_hour__c
                 FROM User
+                WHERE Profile.Name IN ('Developer', 'Architect', 'Consultant')
         ]);
 
         List<User> complementUsers = [

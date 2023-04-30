@@ -23,9 +23,12 @@
 						max={projectItem.Project__r.Project_End__c} disabled={disabledEndDate} checked>
 					</lightning-input>
 				</lightning-layout-item>
-				<lightning-input type="number" label="Assigned Hours" step="1" min="0" max={MaxAssignedHours}
-					value={valueAssignedHours} disabled={disabledAssignedHours} onchange={handleChangeAssignedHours}>
-				</lightning-input>
+				<lightning-layout-item padding="around-small" size="5">
+					<lightning-input type="number" label="Assigned Hours" step="1" min="0" max={MaxAssignedHours}
+						value={valueAssignedHours} disabled={disabledAssignedHours}
+						onchange={handleChangeAssignedHours}>
+					</lightning-input>
+				</lightning-layout-item>
 			</lightning-layout>
 		</div>
 	</template>

@@ -12,6 +12,12 @@ for (User user: ResourceAllocation.getResources('a00Dp000001lEeHIAU')) {
 
 System.debug('==============================================================');
 
+System.debug('<<<<Johnson&Johnson>>>>');
+for (User user: ResourceAllocation.getResources('a00Dp00000AdPgdIAF')) {
+    System.debug(user.Name + ' - ' + user.Profile.Name);
+}
+
+System.debug('==============================================================');
 //System.debug('<<<<Prueba Bernardo Artur>>>>');
 //for (User user: ResourceAllocation.getResources('a00Dp000001lIIXIA2')) {
 //    System.debug(user.Name + ' - ' + user.Profile.Name);
