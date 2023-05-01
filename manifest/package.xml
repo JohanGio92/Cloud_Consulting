@@ -92,13 +92,36 @@
 		<name>CustomTab</name>
 	</types>
 	<types>
+		<members>Publiiiiiiiiiiiiic/QTIHPoFKejtxRNdlgZuVzfWwlagCOC</members>
+		<members>Publiiiiiiiiiiiiic/uQeztWlRDZpGZdONoLRhNSwTkzumXq</members>
+		<name>Dashboard</name>
+	</types>
+	<types>
 		<members>Assigment_Task_Record_Page</members>
+		<members>Home_Page_Default</members>
+		<members>Home_Page_Default1</members>
+		<members>Opportunity_Record_Page</members>
+		<members>Project_Record_Page</members>
+		<members>Project_Record_Page1</members>
+		<members>Project_Record_Page2</members>
 		<members>Project_management_UtilityBar</members>
+		<members>ResourceProject_Record_Page</members>
 		<name>FlexiPage</name>
 	</types>
 	<types>
 		<members>*</members>
 		<name>Flow</name>
+	</types>
+	<types>
+		<members>Assigment_Task__c-Assigment Task Layout</members>
+		<members>ProjectItem__c-Project Item Layout</members>
+		<members>Project__c-Project Layout</members>
+		<members>ResourceProject__c-ResourceProject Layout</members>
+		<name>Layout</name>
+	</types>
+	<types>
+		<members>*</members>
+		<name>LightningComponentBundle</name>
 	</types>
 	<types>
 		<members>BackUpReports/Assigned_hours_and_Pending_hours_qrp</members>
