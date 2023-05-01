@@ -124,6 +124,22 @@
 		<name>LightningComponentBundle</name>
 	</types>
 	<types>
+		<members>Project__c.All</members>
+		<members>ResourceProject__c.All</members>
+		<name>ListView</name>
+	</types>
+	<types>
+		<members>*</members>
+		<name>PermissionSet</name>
+	</types>
+	<types>
+		<members>Architect</members>
+		<members>Consultant</members>
+		<members>Custom%3A Sales Profile</members>
+		<members>Developer</members>
+		<name>Profile</name>
+	</types>
+	<types>
 		<members>BackUpReports/Assigned_hours_and_Pending_hours_qrp</members>
 		<members>BackUpReports/Copy_of_New_Projects_Report_Test_j3g</members>
 		<members>BackUpReports/Estimated_cost_and_actual_cost_b13</members>
@@ -144,6 +160,13 @@
 		<members>Projects_with_ResourceProjects_with_Assigment_Tasks</members>
 		<members>ResourceProject</members>
 		<name>ReportType</name>
+	</types>
+	<types>
+		<members>Architect</members>
+		<members>Consultant</members>
+		<members>Developer</members>
+		<members>Project_Manager</members>
+		<name>Role</name>
 	</types>
 	<types>
 		<members>*</members>
