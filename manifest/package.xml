@@ -101,6 +101,28 @@
 		<name>Flow</name>
 	</types>
 	<types>
+		<members>BackUpReports/Assigned_hours_and_Pending_hours_qrp</members>
+		<members>BackUpReports/Copy_of_New_Projects_Report_Test_j3g</members>
+		<members>BackUpReports/Estimated_cost_and_actual_cost_b13</members>
+		<members>BackUpReports/Hours_to_be_covered_ilY</members>
+		<members>BackUpReports/Johannn_v2f</members>
+		<members>BackUpReports/New_Projects_Report_D03</members>
+		<members>BackUpReports/New_Report_Hours_per_Rol_1Xy</members>
+		<members>BackUpReports/Percentage_hours_per_Rol_2xk</members>
+		<members>BackUpReports/Project_Hours_Information_TGc</members>
+		<members>BackUpReports/Quantity_Hour_Per_Rol_BIM</members>
+		<members>BackUpReports/Total_Project_hours_vs_Assigned_hours_NW4</members>
+		<members>BackUpReports/assigned_hours_and_amount_per_role_6Un</members>
+		<name>Report</name>
+	</types>
+	<types>
+		<members>Project_Items</members>
+		<members>Project_with_ProjectItem</members>
+		<members>Projects_with_ResourceProjects_with_Assigment_Tasks</members>
+		<members>ResourceProject</members>
+		<name>ReportType</name>
+	</types>
+	<types>
 		<members>*</members>
 		<name>StaticResource</name>
 	</types>
