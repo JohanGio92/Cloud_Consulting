@@ -89,10 +89,11 @@ export default class ResouceAllocation extends LightningElement {
 	}
 
 	insertFail() {
+
 		const toastEvent = new ShowToastEvent({
-			title: 'Error',
+			title: 'Warning',
 			message: 'You must to Assigned at least one User',
-			variant: 'error',
+			variant: 'warning',
 		});
 		this.dispatchEvent(toastEvent);
 	}

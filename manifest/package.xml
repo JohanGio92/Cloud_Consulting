@@ -29,6 +29,10 @@
 		<name>ContentAsset</name>
 	</types>
 	<types>
+		<members>Project_management</members>
+		<name>CustomApplication</name>
+	</types>
+	<types>
 		<members>Assigment_Task__c.Description__c</members>
 		<members>Assigment_Task__c.End_Date__c</members>
 		<members>Assigment_Task__c.EstimatedHours__c</members>
@@ -137,6 +141,7 @@
 		<members>Consultant</members>
 		<members>Custom%3A Sales Profile</members>
 		<members>Developer</members>
+		<members>Project Manager</members>
 		<name>Profile</name>
 	</types>
 	<types>
@@ -165,7 +170,6 @@
 		<members>Architect</members>
 		<members>Consultant</members>
 		<members>Developer</members>
-		<members>Project_Manager</members>
 		<name>Role</name>
 	</types>
 	<types>

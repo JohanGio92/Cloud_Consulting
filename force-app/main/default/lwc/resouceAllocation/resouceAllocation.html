@@ -1,17 +1,19 @@
 <template>
 	<lightning-accordion label="Allocating Resources" allow-multiple-sections-open>
-		<lightning-accordion-section name="A" label="Allocating Resources">
+		<lightning-accordion-section name="A" label="Allocating Resources" class="accordion">
 			<template for:each={projectItems} for:item="projectItem">
-				<c-view-project-role key={projectItem.Id} project-item={projectItem}></c-view-project-role>
-				<template for:each={resources} for:item="resource">
-					<c-resource-item key={resource.Id} resource={resource} project-item={projectItem}
-						resource-rol={resource.Profile.Name} project-rol={projectItem.Rol__c}>
-					</c-resource-item>
-				</template>
+				<lightning-accordion-section key={projectItem.Id} label={projectItem.Rol__c}>
+					<c-view-project-role key={projectItem.Id} project-item={projectItem}></c-view-project-role>
+					<template for:each={resources} for:item="resource">
+						<c-resource-item key={resource.Id} resource={resource} project-item={projectItem}
+							resource-rol={resource.Profile.Name} project-rol={projectItem.Rol__c}>
+						</c-resource-item>
+					</template>
+				</lightning-accordion-section>
 			</template>
-			<div class="container_button">
-				<lightning-button label="Assign" onclick={handleClick} variant="brand" stretch></lightning-button>
-			</div>
 		</lightning-accordion-section>
+		<div class="container_button">
+			<lightning-button label="Assign" onclick={handleClick} variant="brand" stretch></lightning-button>
+		</div>
 	</lightning-accordion>
 </template>
