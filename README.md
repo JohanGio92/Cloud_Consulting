@@ -1,18 +1,44 @@
-# Salesforce DX Project: Next Steps
+# CLOUD CONSULTING PROJECT 
 
-Now that you’ve created a Salesforce DX project, what’s next? Here are some documentation resources to get you started.
+## Content
 
-## How Do You Plan to Deploy Your Changes?
 
-Do you want to deploy a set of changes, or create a self-contained application? Choose a [development model](https://developer.salesforce.com/tools/vscode/en/user-guide/development-models).
 
-## Configure Your Salesforce DX Project
+> Team Members
+>
+> Goals
+>
+> Model Object and Relations
+>
+> Funcionality
 
-The `sfdx-project.json` file contains useful configuration information for your project. See [Salesforce DX Project Configuration](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_ws_config.htm) in the _Salesforce DX Developer Guide_ for details about this file.
+## Team Members
 
-## Read All About It
+- Arturo Petrich.
+- Belen Banegas.
+- Bernardo Mingoia.
+- Johan Revilla.
+- Julian Aquino.
 
-- [Salesforce Extensions Documentation](https://developer.salesforce.com/tools/vscode/)
-- [Salesforce CLI Setup Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_setup_intro.htm)
-- [Salesforce DX Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_intro.htm)
-- [Salesforce CLI Command Reference](https://developer.salesforce.com/docs/atlas.en-us.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference.htm)
+
+## Goals
+
+Build an application with a system that allows Cloud Consulting to manage software projects and get out of the manual processes that they have today through excels, documents and repositories that are not integrated or automated.
+
+## Model Object and Relations
+
+Data model from Schema Builder: [click here](https://losrompebytes-dev-ed.develop.lightning.force.com/lightning/setup/SchemaBuilder/home)
+
+Data model (Diagram): [click here](https://app.diagrams.net/#G15Cen1jPO0dfw5jFGSE4BUlqYc6EBiAWt)
+
+GitHub Owner: [click here](https://github.com/JohanGio92)
+
+## Funcionality
+
+### Flow Holiday and Days off request
+
+![Tux, the Linux mascot](/img/flow_reques_holiday_and_day_off.jpeg)
+
+**Flow Send Email When I'ts approved:** send a email for approval to the whole team members. 
+
+
