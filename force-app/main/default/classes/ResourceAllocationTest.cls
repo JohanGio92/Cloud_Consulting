@@ -1,105 +1,95 @@
 @isTest
 public class ResourceAllocationTest {
-    private static Project__c projectTest;
     
-    @TestSetup
-    public static void setupInit(){
-        //SELECT Id, Name, Profile.Name, UserRole.Name, Rate_p_hour__c
-        //     FROM User
-        //     WHERE Profile.Name IN ('Developer', 'Architect', 'Consultant')
+    public static final Integer USER_SIZE = 9;
+    public static final String USER_FIRSTNAME = 'UserFirstname ';
+    public static final String USER_LASTNAME = 'UserLastname ';
+    
+    public static final Map<String, Integer> validUserName = new Map<String, Integer>();
+    
+    public static void setValidUserName() {
         
-        List<User> users= new List<User>();
+        Integer userSize = resourceAllocationBuilderTest.USER_SIZE;
+        String userFirstName = resourceAllocationBuilderTest.USER_FIRSTNAME;
+        String userLastName = resourceAllocationBuilderTest.USER_LASTNAME;
         
-        
-        for(Integer i=1; i <=9; i++){
-            User userTest = new User();
-            userTest.FirstName = 'UserFirst ' + i; 
-            userTest.LastName = 'User ' + i;       
-            if(i<= 3){
-                userTest.UserRole.Name = 'Architect';
-                userTest.Rate_p_hour__c = 30;
-                userTest.Profile.Name = 'Architect';
-            } else if( 4 <= i && i <=6){            
-                userTest.UserRole.Name = 'Developer';
-                userTest.Rate_p_hour__c = 20;
-                userTest.Profile.Name = 'Developer';
-            } else {
-                userTest.UserRole.Name = 'Consultant';
-                userTest.Rate_p_hour__c = 15;
-                userTest.Profile.Name = 'Consultant';
-            } 
-            users.add(userTest);
+        for(Integer index = 0; index < userSize; index++) {
+            String userFullName = userFirstName + index + ' ' + userLastName + index;
+            validUserName.put(userFullName, index);
         }
-        
-        insert users;
-        // Database.insert(users);
-        
-        
-        projectTest = new Project__c();
-        
-        projectTest.Project_Start__c = Date.newInstance(2023, 4, 27);
-        projectTest.Project_End__c = Date.newInstance(2023, 5, 7);
-        projectTest.QuantityHourArchitect__c = 50;
-        projectTest.QuantityHourDeveloper__c = 30;
-        projectTest.QuantityHourConsult__c = 35;
-        
-        insert projectTest;
-        
-        
-        List<ProjectItem__c> projectItems = new List<ProjectItem__c>();
-        projectItems.add(new ProjectItem__c(Rol__c = 'Developer', Quantity__c = 150, Project__c = projectTest.Id));
-        projectItems.add(new ProjectItem__c(Rol__c = 'Architect', Quantity__c = 100, Project__c = projectTest.Id));
-        projectItems.add(new ProjectItem__c(Rol__c = 'Consultant', Quantity__c = 120, Project__c = projectTest.Id));
-        
-        insert projectItems;
-        
-        List<ResourceProject__c> resourceProjectsTest = new List<ResourceProject__c>();
-        
-        resourceProjectsTest.add(new ResourceProject__c(Rol__c='Developer', 
-                                                        Project__c = projectTest.Id,
-                                                        User__c = users[5].Id,
-                                                        Assigned_Hours__c = 30,
-                                                        Name ='Developer',
-                                                        Start_Date__c = projectTest.Project_Start__c,
-                                                        End_Date__c =  projectTest.Project_End__c));
-         resourceProjectsTest.add(new ResourceProject__c(Rol__c='Architect',
-                                                        Project__c = projectTest.Id,
-                                                        User__c = users[1].Id,
-                                                        Assigned_Hours__c = 40,
-                                                        Name ='Architect',
-                                                        Start_Date__c = projectTest.Project_Start__c,
-                                                        End_Date__c =  projectTest.Project_End__c));
-         resourceProjectsTest.add(new ResourceProject__c(Rol__c='Consultant',
-                                                        Project__c = projectTest.Id,
-                                                        User__c = users[8].Id,
-                                                        Assigned_Hours__c = 20,
-                                                        Name ='Consultant',
-                                                        Start_Date__c = projectTest.Project_Start__c,
-                                                        End_Date__c =  projectTest.Project_End__c));
-        insert resourceProjectsTest;
-        
-               
-        
     }
+    
+    public static Set<User> findUsersTest(List<User> users) {
+        Set<User> expectedUser = new Set<User>();
+        
+        for(User user: users) {
+            if(validUserName.containsKey(user.Name)) {
+                expectedUser.add(user);
+            }
+        }
+        return expectedUser;
+    }
+    
+    public static Set<User> filterByCreatedUserTest(List<User> users) {
+        setValidUserName();
+        return findUsersTest(users);
+    }   
       
-    
-    @isTest static void testGetResources(){
-        
-        
-         Test.startTest();
-        ResourceAllocation.getResources(projectTest.Id);
+    @isTest
+    public static void testGetResources() {
+               
+        ResourceAllocationBuilderTest resourceAllocationBuilderTest = new ResourceAllocationBuilderTest();
+        resourceAllocationBuilderTest.build();
+        Id projectId = resourceAllocationBuilderTest.obtainProjectId();
+                    
+        Test.startTest();
+        List<User> users = ControllerResourceAllocation.getResources(projectId);
         Test.stopTest();
-    //  System.assertEquals( );
         
+       	Set<User> expectedUsers = filterByCreatedUserTest(users);
+        
+        for(User expectedUser: expectedUsers) {
+            Assert.isTrue(validUserName.containsKey(expectedUser.Name));
+        }
+              
     }
     
-    
-    @isTest static void testGetProjectItems(){
-         Test.startTest();
-        ResourceAllocation.getProjectItems(projectTest.Id);
+    @isTest
+    public static void testGetProjectItems() {
+                
+        ResourceAllocationBuilderTest resourceAllocationBuilderTest = new ResourceAllocationBuilderTest();
+        resourceAllocationBuilderTest.build();
+        Id projectId = resourceAllocationBuilderTest.obtainProjectId();  
+
+        Test.startTest();
+        List<ProjectItem__c> ExpectedProjectItems = ControllerResourceAllocation.getProjectItems(projectId);
         Test.stopTest();
+        
+        Map<Id, ProjectItem__c> SUTprojectItems = ResourceAllocationBuilderTest.obtainProjectItems();
+        
+        for(ProjectItem__c ExpectedProjectItem: ExpectedProjectItems) {
+            if(SUTprojectItems.containsKey(ExpectedProjectItem.Id)) {
+                ProjectItem__c SUTprojectItem = SUTprojectItems.get(ExpectedProjectItem.Id);
+                Assert.areEqual(ExpectedProjectItem.Quantity__c, SUTprojectItem.Quantity__c);
+                Assert.areEqual(ExpectedProjectItem.Rol__c, SUTprojectItem.Rol__c);
+                Assert.areEqual(ExpectedProjectItem.Project__c, SUTprojectItem.Project__c);
+            } 
+        }
+                 
     }
     
-    
+    @isTest
+    public static void testCreateResourceProjects() {
+        ResourceAllocationBuilderTest resourceAllocationBuilderTest = new ResourceAllocationBuilderTest();
+        String jsonResourceProjects = resourceAllocationBuilderTest.buildjsonResourceProjects();
+        
+        try {
+            ControllerResourceAllocation.createResourceProjects(jsonResourceProjects);
+            Assert.isTrue(true);
+        } catch(DmlException dmlException) {
+            Assert.fail();
+        }
+      
+    }
     
 }

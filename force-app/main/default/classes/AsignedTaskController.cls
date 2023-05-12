@@ -10,10 +10,4 @@ public with sharing class AsignedTaskController {
         AssignedTask assignedTask = new AssignedTask();
         assignedTask.updateReportedHours(jsonAssigmentTask);
     }
-
-    @AuraEnabled(Cacheable=true)
-    public static void updateTaskToProgress(String jsonAssigmentTask) {
-        AssignedTask assignedTask = new AssignedTask();
-        assignedTask.updateTaskToProgress(jsonAssigmentTask);
-    }
 }

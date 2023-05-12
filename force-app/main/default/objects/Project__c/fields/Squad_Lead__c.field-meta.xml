@@ -4,7 +4,17 @@
     <deleteConstraint>SetNull</deleteConstraint>
     <externalId>false</externalId>
     <label>Squad Lead</label>
-    <referenceTo>User</referenceTo>
+    <lookupFilter>
+        <active>true</active>
+        <filterItems>
+            <field>$Source.Id</field>
+            <operation>equals</operation>
+            <valueField>ResourceProject__c.Project__r.Id</valueField>
+        </filterItems>
+        <isOptional>false</isOptional>
+    </lookupFilter>
+    <referenceTo>ResourceProject__c</referenceTo>
+    <relationshipLabel>Projects</relationshipLabel>
     <relationshipName>Projects</relationshipName>
     <required>false</required>
     <trackTrending>false</trackTrending>

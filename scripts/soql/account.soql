@@ -56,9 +56,20 @@
 //FROM Contact
 //GROUP BY AccountId
 
-SELECT Id, Project__r.Name, (
-        SELECT Id, Name, Status__c, EstimatedHours__c, ReportedHours__c
-        FROM Assigment_Tasks__r
-        )
-FROM ResourceProject__c
-WHERE User__c = '005Dp000002K2GQIA0'
+//SELECT Id, Project__r.Name, (
+//        SELECT Id, Name, Status__c, EstimatedHours__c, ReportedHours__c
+//        FROM Assigment_Tasks__r
+//        )
+//FROM ResourceProject__c
+//WHERE User__c = '005Dp000002K2GQIA0'
+
+//SELECT Id, Name, AccountId
+//FROM Contact
+
+//SELECT Id, Name, (SELECT Id, Name FROM Contacts) 
+//FROM Account
+//WHERE Id IN ( SELECT AccountId FROM Contact WHERE AccountId = NULL )
+
+SELECT Id, Name, AccountId
+FROM Contact
+WHERE AccountId = '001Dp00000F73T0IAJ'

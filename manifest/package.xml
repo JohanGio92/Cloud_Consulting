@@ -22,6 +22,10 @@
 	</types>
 	<types>
 		<members>*</members>
+		<name>ApprovalProcess</name>
+	</types>
+	<types>
+		<members>*</members>
 		<name>AuraDefinitionBundle</name>
 	</types>
 	<types>
@@ -30,12 +34,14 @@
 	</types>
 	<types>
 		<members>Project_management</members>
+		<members>Resource</members>
 		<name>CustomApplication</name>
 	</types>
 	<types>
 		<members>Assigment_Task__c.Description__c</members>
 		<members>Assigment_Task__c.End_Date__c</members>
 		<members>Assigment_Task__c.EstimatedHours__c</members>
+		<members>Assigment_Task__c.Init__c</members>
 		<members>Assigment_Task__c.ReportedHours__c</members>
 		<members>Assigment_Task__c.ResourceProject__c</members>
 		<members>Assigment_Task__c.Start_Date__c</members>
@@ -82,6 +88,13 @@
 		<members>ResourceProject__c.User__c</members>
 		<members>User.Rate_p_hour__c</members>
 		<members>User.Rol__c</members>
+		<members>holiday_and_day_off__c.Description__c</members>
+		<members>holiday_and_day_off__c.End_Date__c</members>
+		<members>holiday_and_day_off__c.Project__c</members>
+		<members>holiday_and_day_off__c.Purpose__c</members>
+		<members>holiday_and_day_off__c.Start_Date__c</members>
+		<members>holiday_and_day_off__c.Status_Indicator__c</members>
+		<members>holiday_and_day_off__c.Status__c</members>
 		<name>CustomField</name>
 	</types>
 	<types>
@@ -89,6 +102,7 @@
 		<members>ProjectItem__c</members>
 		<members>Project__c</members>
 		<members>ResourceProject__c</members>
+		<members>holiday_and_day_off__c</members>
 		<name>CustomObject</name>
 	</types>
 	<types>
@@ -101,7 +115,9 @@
 		<name>Dashboard</name>
 	</types>
 	<types>
+		<members>ASIGNACION_HORAS</members>
 		<members>Assigment_Task_Record_Page</members>
+		<members>Holiday_and_Day_off_Record_Page</members>
 		<members>Home_Page_Default</members>
 		<members>Home_Page_Default1</members>
 		<members>Opportunity_Record_Page</members>
@@ -121,6 +137,8 @@
 		<members>ProjectItem__c-Project Item Layout</members>
 		<members>Project__c-Project Layout</members>
 		<members>ResourceProject__c-ResourceProject Layout</members>
+		<members>holiday_and_day_off__c-Holiday and Day off Layout</members>
+		<members>holiday_and_day_off__c-sales page layout</members>
 		<name>Layout</name>
 	</types>
 	<types>
@@ -128,8 +146,11 @@
 		<name>LightningComponentBundle</name>
 	</types>
 	<types>
+		<members>Assigment_Task__c.All</members>
 		<members>Project__c.All</members>
+		<members>Project__c.MyProjects</members>
 		<members>ResourceProject__c.All</members>
+		<members>holiday_and_day_off__c.All</members>
 		<name>ListView</name>
 	</types>
 	<types>
@@ -142,6 +163,7 @@
 		<members>Custom%3A Sales Profile</members>
 		<members>Developer</members>
 		<members>Project Manager</members>
+		<members>Resource</members>
 		<name>Profile</name>
 	</types>
 	<types>
@@ -177,8 +199,29 @@
 		<name>StaticResource</name>
 	</types>
 	<types>
+		<members>Assigment_Task__c.verify_creation_task</members>
+		<members>Project__c.Project_in_progress</members>
+		<members>ResourceProject__c.Project_in_Progress</members>
 		<members>ResourceProject__c.Resource_Project_End_Date_Must_Be_Within</members>
+		<members>holiday_and_day_off__c.end_date_must_be_greater_than_or_equal_t</members>
 		<name>ValidationRule</name>
+	</types>
+	<types>
+		<members>holiday_and_day_off__c</members>
+		<name>Workflow</name>
+	</types>
+	<types>
+		<members>holiday_and_day_off__c.reject_email</members>
+		<name>WorkflowAlert</name>
+	</types>
+	<types>
+		<members>holiday_and_day_off__c.accept</members>
+		<members>holiday_and_day_off__c.approved</members>
+		<members>holiday_and_day_off__c.initial</members>
+		<members>holiday_and_day_off__c.reject</members>
+		<members>holiday_and_day_off__c.rejected</members>
+		<members>holiday_and_day_off__c.submitted</members>
+		<name>WorkflowFieldUpdate</name>
 	</types>
 	<version>55.0</version>
 </Package>

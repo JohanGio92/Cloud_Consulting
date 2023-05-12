@@ -5,19 +5,19 @@
 // You can also execute the entire file by running the command:
 //     SFDX: Execute Anonymous Apex with Editor Contents
 
-System.debug('<<<<IBM>>>>');
-for (User user: ResourceAllocation.getResources('a00Dp000001lEeHIAU')) {
-    System.debug(user.Name + ' - ' + user.Profile.Name);
-}
-
-System.debug('==============================================================');
-
-System.debug('<<<<Johnson&Johnson>>>>');
-for (User user: ResourceAllocation.getResources('a00Dp00000AdPgdIAF')) {
-    System.debug(user.Name + ' - ' + user.Profile.Name);
-}
-
-System.debug('==============================================================');
+//System.debug('<<<<IBM>>>>');
+//for (User user: ResourceAllocation.getResources('a00Dp000001lEeHIAU')) {
+//    System.debug(user.Name + ' - ' + user.Profile.Name);
+//}
+//
+//System.debug('==============================================================');
+//
+//System.debug('<<<<Johnson&Johnson>>>>');
+//for (User user: ResourceAllocation.getResources('a00Dp00000AdPgdIAF')) {
+//    System.debug(user.Name + ' - ' + user.Profile.Name);
+//}
+//
+//System.debug('==============================================================');
 //System.debug('<<<<Prueba Bernardo Artur>>>>');
 //for (User user: ResourceAllocation.getResources('a00Dp000001lIIXIA2')) {
 //    System.debug(user.Name + ' - ' + user.Profile.Name);
@@ -74,3 +74,19 @@ System.debug('==============================================================');
 //contacts.addAll(otherContacts);
 //System.debug(contacts);
 //System.debug(contacts.isEmpty());
+
+List<Account> accounts = [
+    SELECT Id, Name, (SELECT Id, Name FROM Contacts) 
+    FROM Account
+    WHERE Id IN ( SELECT AccountId FROM Contact WHERE AccountId = NULL )
+];
+
+System.debug(accounts.isEmpty());
+
+List<Contact> contacts = [
+    SELECT Id, Name, AccountId
+    FROM Contact
+    WHERE AccountId = '001Dp00000F73T0IAJ'
+];
+
+System.debug(contacts.isEmpty());

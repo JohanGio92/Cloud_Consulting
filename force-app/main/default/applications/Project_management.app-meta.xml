@@ -65,6 +65,8 @@
     </profileActionOverrides>
     <tabs>standard-home</tabs>
     <tabs>Project__c</tabs>
+    <tabs>Assigment_Task__c</tabs>
+    <tabs>holiday_and_day_off__c</tabs>
     <uiType>Lightning</uiType>
     <utilityBar>Project_management_UtilityBar</utilityBar>
 </CustomApplication>
